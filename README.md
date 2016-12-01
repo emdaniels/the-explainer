@@ -1,16 +1,22 @@
 # The Explainer
 
 Augments
+
 (enlarge or increase)
 
 text with the definitions 
+
 (a concise explanation of the meaning of a word or phrase or symbol)
 
 of words 
+
 (the words that are spoken)
 
 not found in the [Basic English](https://en.wiktionary.org/wiki/Appendix:1000_basic_English_words) word list. 
 
+
+
+An entry in [NaNoGenMo 2016](https://github.com/NaNoGenMo/2016).
 
 References
 ==========

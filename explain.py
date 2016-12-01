@@ -67,12 +67,12 @@ if __name__ == "__main__":
     with open("basicEnglish.txt", "rU") as f:
         basic_english = f.read().split('\n')
 
-    with open("intro.txt", "rU") as f:
+    with open("HeartofDarkness.txt", "rU") as f:
         wordy_text = f.read().decode('latin-1').encode('utf-8').decode('utf-8')
 
     basic_text = define_by_pos(tag_text(wordy_text))
     chunked_text = chunk_text(basic_text, 80)
 
-    with open("intro_Explained.txt", "wb") as f:
+    with open("HeartofDarkness_Explained.txt", "wb") as f:
         for sent in chunked_text:
             f.write(sent + "\n")
