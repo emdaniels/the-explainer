@@ -7,7 +7,9 @@ Purpose: Augments text with the definitions of words not found
 in the Basic English word list.
 """
 
+import argparse
 import nltk
+import os
 from nltk.corpus import wordnet
 
 pos_to_define = ['JJ', 'JJS', 'JJR', 'NN', 'NNS', 'RB', 'RBR', 'RBS', 'VB',
@@ -64,15 +66,24 @@ def chunk_text(text, length):
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="Augments text with the definitions of words not found "
+                    "in the Basic English word list")
+    parser.add_argument('infile',
+                        help='Input filename')
+    args = parser.parse_args()
+
+    outfile = os.path.splitext(args.infile)[0] + "_Explained.txt"
+
     with open("basicEnglish.txt", "rU") as f:
         basic_english = f.read().split('\n')
 
-    with open("HeartofDarkness.txt", "rU") as f:
+    with open(args.infile, "rU") as f:
         wordy_text = f.read().decode('latin-1').encode('utf-8').decode('utf-8')
 
     basic_text = define_by_pos(tag_text(wordy_text))
     chunked_text = chunk_text(basic_text, 80)
 
-    with open("HeartofDarkness_Explained.txt", "wb") as f:
+    with open(outfile, "wb") as f:
         for sent in chunked_text:
             f.write(sent + "\n")
