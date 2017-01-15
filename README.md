@@ -15,8 +15,11 @@ of words
 not found in the [Basic English](https://en.wiktionary.org/wiki/Appendix:1000_basic_English_words) word list. 
 
 
-
 An entry in [NaNoGenMo 2016](https://github.com/NaNoGenMo/2016).
+
+To generate new work, navigate to your project directory from the command line and run:
+
+python explain.py MobyDick.txt
 
 References
 ==========
