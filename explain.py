@@ -37,20 +37,20 @@ def define_by_pos(tagged_wordy_text):
     for word, pos in tagged_wordy_text[:]:
         for pos_def in pos_to_define:
             if pos == pos_def:
-                if any(word in s for s in basic_english):
+                if (word in previously_defined_words or
+                    any(word in s for s in basic_english)):
                     continue
                 else:
-                    if word not in previously_defined_words:
-                        if pos == 'JJ' or pos == 'JJS' or pos == 'JJR':
-                            definition = define_word(word, 'a')
-                        elif pos == 'NN' or pos == 'NNS':
-                            definition = define_word(word, 'n')
-                        elif pos == 'RB' or pos == 'RBR' or pos == 'RBS':
-                            definition = define_word(word, 'r')
-                        elif pos == 'VB' or pos == 'VBD' or pos == 'VBG' \
-                                or pos == 'VBN' or pos == 'VBP' or pos == 'VBZ':
-                            definition = define_word(word, 'v')
-                        previously_defined_words.add(word)
+                    if pos == 'JJ' or pos == 'JJS' or pos == 'JJR':
+                        definition = define_word(word, 'a')
+                    elif pos == 'NN' or pos == 'NNS':
+                        definition = define_word(word, 'n')
+                    elif pos == 'RB' or pos == 'RBR' or pos == 'RBS':
+                        definition = define_word(word, 'r')
+                    elif pos == 'VB' or pos == 'VBD' or pos == 'VBG' \
+                            or pos == 'VBN' or pos == 'VBP' or pos == 'VBZ':
+                        definition = define_word(word, 'v')
+                    previously_defined_words.add(word)
         basic_text.append((word + ' ' + definition).encode('utf-8'))
         definition = ''
     return basic_text
